@@ -81,6 +81,19 @@ FuzzySet *YNB = new FuzzySet(-40, -40, -30, -15); // Instantiating a FuzzySet ob
   FuzzySet *YNM = new FuzzySet(-sngM, -sngM, -sngM, -sngM); // Instantiating a FuzzySet object
   FuzzySet *YNB = new FuzzySet(-sngB, -sngB, -sngB, -sngB); // Instantiating a FuzzySet obj
 */
+
+//Fuzzy array
+FuzzySet fuzzyArray0[] = {ZE, PS, PM, PB, NS, NM, NB,} 
+FuzzySet fuzzyArray1[] = {YPS, YPM, YPB, YNS, YNM, YNB}
+
+//iterate Fuzzy set instance 12
+iterateFuzzySet(arrayToIterate, object12){
+  for(int iterate12 = 0; iterate12 < arrayToIterate.size; iterate12++){
+    object12->addFuzzySet(arrayToIterate[iterate12]);
+  }
+}
+
+
 //lsm9ds1 SPI interface
 Adafruit_LSM9DS1 lsm = Adafruit_LSM9DS1(CSG, CSM);
 //lcd code
@@ -114,13 +127,7 @@ void setup() {
   }
   //course fuzzy memberschip
   FuzzyInput *course = new FuzzyInput(1);          // Instantiating a FuzzyInput object
-  course->addFuzzySet(ZE);                         // Including the FuzzySet into FuzzyInput
-  course->addFuzzySet(PS);                         // Including the FuzzySet into FuzzyInput
-  course->addFuzzySet(PM);                         // Including the FuzzySet into FuzzyInput
-  course->addFuzzySet(PB);                         // Including the FuzzySet into FuzzyInput
-  course->addFuzzySet(NS);                         // Including the FuzzySet into FuzzyInput
-  course->addFuzzySet(NM);                         // Including the FuzzySet into FuzzyInput
-  course->addFuzzySet(NB);                         // Including the FuzzySet into FuzzyInput
+  iterateFuzzySet(fuzzyArray0, course);
   fuzzy->addFuzzyInput(course);                    // Including the FuzzyInput into Fuzzy
 
   //ROT fuzzy memberschip
